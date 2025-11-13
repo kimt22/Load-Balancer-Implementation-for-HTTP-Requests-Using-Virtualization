@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    server_name = "VM 11"
-    html = "<h3>Hello {space}{name}!</h3><b>Hostname:</b> {hostname}<br/> <b>Response from vm11</b><br/>"
+    server_name = "<name>" # enter the name of the srver 
+    html = "<h3>Hello {space}{name}!</h3><b>Hostname:</b> {hostname}<br/> <b>Response from {hostname} </b><br/>"
     return html.format(space=" ", name=os.getenv("NAME", "Kurt"), hostname=server_name)
 
 @app.route("/load")
@@ -19,4 +19,5 @@ def load():
     return str(load)
 
 if __name__ == "__main__":
+
     app.run(host='0.0.0.0', port=8080)
