@@ -17,7 +17,8 @@ ENV PATH="/app/venv/bin:$PATH"
 RUN pip install --upgrade pip && pip install flask requests psutil
 
 # Set environment variable
-ENV NAME Kurt
+ENV NAME All
 
 # Specify the default command to run your application
-CMD ["python", "app2.py"]
+
+CMD ["python", "random.py"]
