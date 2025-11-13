@@ -1,4 +1,4 @@
-## wrr vm 10
+## weighted round robin
 
 from flask import Flask, request
 import requests
@@ -6,8 +6,8 @@ import requests
 app = Flask(__name__)
 
 servers = [
-    {"ip": "http://74.234.87.213:8080", "weight": 7},
-    {"ip": "http://20.238.112.207:8080", "weight": 8}
+    {"ip": "http://<public ip:port>", "weight": 7},   #enter your server's public ip's and ports its listening to.
+    {"ip": "http://<public ip:port>", "weight": 8}
 ]
 
 weighted_servers = [server["ip"] for server in servers for _ in range(server["weight"])]
@@ -31,4 +31,5 @@ def forward_request(selected_server):
     return response
 
 if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=8080)
