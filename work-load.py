@@ -1,4 +1,4 @@
-## wsl
+## work load sensitivity
 
 from flask import Flask, render_template_string
 import requests
@@ -28,8 +28,8 @@ html_template = """
 app = Flask(__name__)
 
 servers = [
-    {"ip": "74.234.87.213:8080", "name": "VM11"},
-    {"ip": "20.238.112.207:8080", "name": "VM12"}
+    {"ip": "<public ip:port>", "name": "VM11"},    # enter your server's public ip's and port's listening to
+    {"ip": "<public ip:port>", "name": "VM12"}
 ]
 
 @app.route('/')
@@ -50,4 +50,5 @@ def load_balance():
     return render_template_string(html_template, servers=servers, loads=loads, selected=selected)
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=8080)
