@@ -1,4 +1,4 @@
-## rr vm 10
+## round robin
 
 from flask import Flask, request
 import requests
@@ -6,7 +6,7 @@ import requests
 app = Flask(__name__)
 
 # Define servers
-servers = ['http://74.234.87.213:8080', 'http://20.238.112.207:8080']
+servers = ['http://<public ip:port>', 'http://<public ip:port>'] #enter your server's public ip's and ports its listening to.
 
 # Counter to keep track of the next server to use
 current_server = 0
@@ -20,4 +20,5 @@ def balancer():
     return response.content, response.status_code, response.headers.items()
 
 if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=8080)
